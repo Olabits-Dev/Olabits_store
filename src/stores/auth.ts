@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import axios from 'axios'
 import type { User } from '../types'
 
-const API_URL = import.meta.env.VITE_API_URL || '${API_URL}'
+const API_URL = import.meta.env.VITE_API_URL || 'https://olabits-store.vercel.app/api'
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
@@ -24,7 +24,7 @@ export const useAuthStore = defineStore('auth', {
       await axios.post(`${API_URL}/auth/register`, userData)
     },
     async updateProfile(userData: Record<string, string>) {
-      const response = await axios.put(`${API_URL}/auth/profile`, userData, {
+      const response = await axios.put(`${API_URL}/profile`, userData, {
         headers: { Authorization: `Bearer ${this.token}` },
       })
       this.user = response.data.user

@@ -12,7 +12,7 @@ import type { Product, Order } from '../types'
 const auth = useAuthStore()
 const activeTab = ref<'products' | 'orders'>('products')
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5005/api'
+const API_URL = import.meta.env.VITE_API_URL || 'https://olabits-store.vercel.app/api'
 
 // Products State
 const products = ref<Product[]>([])
@@ -32,8 +32,8 @@ const fetchData = async () => {
   orderLoading.value = true
   try {
     const [prodRes, orderRes] = await Promise.all([
-      axios.get(`${API_URL}/admin/products`, { headers: { Authorization: `Bearer ${auth.token}` } }),
-      axios.get(`${API_URL}/admin/orders`, { headers: { Authorization: `Bearer ${auth.token}` } })
+      axios.get(`https://olabits-store.vercel.app/api/admin/products`, { headers: { Authorization: `Bearer ${auth.token}` } }),
+      axios.get(`https://olabits-store.vercel.app/api/admin/orders`, { headers: { Authorization: `Bearer ${auth.token}` } })
     ])
     products.value = prodRes.data
     orders.value = orderRes.data
@@ -80,9 +80,9 @@ const openProductModal = (product: Product | null = null) => {
 const saveProduct = async () => {
   try {
     if (editingProduct.value?.id) {
-      await axios.put(`${API_URL}/admin/products/${editingProduct.value.id}`, editingProduct.value, { headers: { Authorization: `Bearer ${auth.token}` } })
+      await axios.put(`https://olabits-store.vercel.app/api/admin/products/${editingProduct.value.id}`, editingProduct.value, { headers: { Authorization: `Bearer ${auth.token}` } })
     } else {
-      await axios.post(`${API_URL}/admin/products`, editingProduct.value, { headers: { Authorization: `Bearer ${auth.token}` } })
+      await axios.post(`https://olabits-store.vercel.app/api/admin/products`, editingProduct.value, { headers: { Authorization: `Bearer ${auth.token}` } })
     }
     isProductModalOpen.value = false
     fetchData()
@@ -94,7 +94,7 @@ const saveProduct = async () => {
 const deleteProduct = async (id: number) => {
   if (!confirm('Are you sure you want to delete this product?')) return
   try {
-    await axios.delete(`${API_URL}/admin/products/${id}`, { headers: { Authorization: `Bearer ${auth.token}` } })
+    await axios.delete(`https://olabits-store.vercel.app/api/admin/products/${id}`, { headers: { Authorization: `Bearer ${auth.token}` } })
     fetchData()
   } catch (error) {
     alert('Failed to delete product')
@@ -104,7 +104,7 @@ const deleteProduct = async (id: number) => {
 // --- ORDER ACTIONS ---
 const updateOrderStatus = async (orderId: number, status: string) => {
   try {
-    await axios.put(`${API_URL}/admin/orders/${orderId}/status`, { status }, { headers: { Authorization: `Bearer ${auth.token}` } })
+    await axios.put(`https://olabits-store.vercel.app/api/admin/orders/${orderId}/status`, { status }, { headers: { Authorization: `Bearer ${auth.token}` } })
     fetchData()
   } catch (error) {
     alert('Failed to update status')

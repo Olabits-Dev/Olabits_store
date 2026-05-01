@@ -9,11 +9,11 @@ const auth = useAuthStore()
 const orders = ref<Order[]>([])
 const loading = ref(true)
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5005/api'
+const API_URL = import.meta.env.VITE_API_URL || 'https://olabits-store.vercel.app/api'
 
 onMounted(async () => {
   try {
-    const response = await axios.get(`${API_URL}/orders/my-orders`, {
+    const response = await axios.get(`https://olabits-store.vercel.app/api/orders/my-orders`, {
       headers: { Authorization: `Bearer ${auth.token}` },
     })
     orders.value = response.data

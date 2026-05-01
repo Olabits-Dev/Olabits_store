@@ -24,7 +24,7 @@ const startCheckout = () => {
   showPayment.value = true
 }
 
-const API_URL = import.meta.env.VITE_API_URL || '${API_URL}'
+const API_URL = import.meta.env.VITE_API_URL || 'https://olabits-store.vercel.app/api'
 
 const handleFinalOrder = async () => {
   loading.value = true
@@ -32,7 +32,7 @@ const handleFinalOrder = async () => {
 
   try {
     await axios.post(
-      `${API_URL}/orders`,
+      `https://olabits-store.vercel.app/api/orders`,
       {
         items: cart.items,
         total: cart.totalPrice,

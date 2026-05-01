@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useAuthStore } from './auth'
 import type { Product } from '../types'
 
-const API_URL = import.meta.env.VITE_API_URL || '${API_URL}'
+const API_URL = import.meta.env.VITE_API_URL || 'https://olabits-store.vercel.app/api'
 
 export const useWishlistStore = defineStore('wishlist', {
   state: () => ({
@@ -17,7 +17,7 @@ export const useWishlistStore = defineStore('wishlist', {
 
       this.isLoading = true
       try {
-        const response = await axios.get(`${API_URL}/wishlist`, {
+        const response = await axios.get(`https://olabits-store.vercel.app/api/wishlist`, {
           headers: { Authorization: `Bearer ${auth.token}` },
         })
         this.items = response.data
@@ -33,7 +33,7 @@ export const useWishlistStore = defineStore('wishlist', {
 
       try {
         const response = await axios.post(
-          `${API_URL}/wishlist/${product.id}`,
+          `https://olabits-store.vercel.app/api/wishlist/${product.id}`,
           {},
           {
             headers: { Authorization: `Bearer ${auth.token}` },

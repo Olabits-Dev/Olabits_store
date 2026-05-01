@@ -15,7 +15,7 @@ const cartStore = useCartStore()
 const wishlistStore = useWishlistStore()
 const auth = useAuthStore()
 
-const API_URL = import.meta.env.VITE_API_URL || '${API_URL}'
+const API_URL = import.meta.env.VITE_API_URL || 'https://olabits-store.vercel.app/api'
 
 const product = ref<Product | null>(null)
 const reviews = ref<any[]>([])
@@ -30,7 +30,7 @@ const fetchData = async () => {
   const prodId = route.params.id as string
   const [prod, revRes] = await Promise.all([
     productStore.fetchProductById(prodId),
-    axios.get(`${API_URL}/reviews/${prodId}`),
+    axios.get(`https://olabits-store.vercel.app/api/reviews/${prodId}`),
   ])
   product.value = prod
   reviews.value = revRes.data
@@ -44,7 +44,7 @@ const submitReview = async () => {
   submittingReview.value = true
   try {
     await axios.post(
-      `${API_URL}/reviews/${product.value?.id}`,
+      `https://olabits-store.vercel.app/api/reviews/${product.value?.id}`,
       {
         rating: newRating.value,
         comment: newComment.value,

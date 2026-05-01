@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import axios from 'axios'
 import type { Product } from '../types'
 
-const API_URL = import.meta.env.VITE_API_URL || '${API_URL}'
+const API_URL = import.meta.env.VITE_API_URL || 'https://olabits-store.vercel.app/api'
 
 export const useProductStore = defineStore('product', {
   state: () => ({
@@ -57,7 +57,7 @@ export const useProductStore = defineStore('product', {
       this.isLoading = true
       this.error = null
       try {
-        const response = await axios.get(`${API_URL}/products`)
+        const response = await axios.get(`https://olabits-store.vercel.app/api/products`)
         this.products = response.data
       } catch (err) {
         if (axios.isAxiosError(err)) {
@@ -73,7 +73,7 @@ export const useProductStore = defineStore('product', {
     async fetchProductById(id: string): Promise<Product | null> {
       this.isLoading = true
       try {
-        const response = await axios.get(`${API_URL}/products/${id}`)
+        const response = await axios.get(`https://olabits-store.vercel.app/api/products/${id}`)
         return response.data
       } catch {
         this.error = 'Product not found'
