@@ -24,7 +24,7 @@ export const useAuthStore = defineStore('auth', {
       await axios.post(`${API_URL}/auth/register`, userData)
     },
     async updateProfile(userData: Record<string, string>) {
-      const response = await axios.put(`${API_URL}/profile`, userData, {
+      const response = await axios.put(`${API_URL}/auth/profile`, userData, {
         headers: { Authorization: `Bearer ${this.token}` },
       })
       this.user = response.data.user

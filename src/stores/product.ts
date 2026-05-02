@@ -57,7 +57,7 @@ export const useProductStore = defineStore('product', {
       this.isLoading = true
       this.error = null
       try {
-        const response = await axios.get(`https://olabits-store.vercel.app/api/products`)
+        const response = await axios.get(`${API_URL}/products`)
         this.products = response.data
       } catch (err) {
         if (axios.isAxiosError(err)) {
@@ -73,7 +73,7 @@ export const useProductStore = defineStore('product', {
     async fetchProductById(id: string): Promise<Product | null> {
       this.isLoading = true
       try {
-        const response = await axios.get(`https://olabits-store.vercel.app/api/products/${id}`)
+        const response = await axios.get(`${API_URL}/products/${id}`)
         return response.data
       } catch {
         this.error = 'Product not found'

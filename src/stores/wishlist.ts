@@ -17,7 +17,7 @@ export const useWishlistStore = defineStore('wishlist', {
 
       this.isLoading = true
       try {
-        const response = await axios.get(`https://olabits-store.vercel.app/api/wishlist`, {
+        const response = await axios.get(`${API_URL}/wishlist`, {
           headers: { Authorization: `Bearer ${auth.token}` },
         })
         this.items = response.data
@@ -33,7 +33,7 @@ export const useWishlistStore = defineStore('wishlist', {
 
       try {
         const response = await axios.post(
-          `https://olabits-store.vercel.app/api/wishlist/${product.id}`,
+          `${API_URL}/wishlist/${product.id}`,
           {},
           {
             headers: { Authorization: `Bearer ${auth.token}` },
