@@ -81,10 +81,12 @@ const formatCurrency = (value: number) => {
         <button
           @click="cart.addToCart(product)"
           :disabled="product.stock === 0"
-          class="w-full flex items-center justify-center gap-2 bg-olabits-wine hover:bg-black text-white font-black py-3 rounded-xl shadow-lg shadow-rose-100 dark:shadow-none transition-all active:scale-95 text-[11px] uppercase tracking-widest disabled:bg-gray-200 dark:disabled:bg-gray-700"
+          class="w-full relative group/btn overflow-hidden bg-olabits-wine hover:bg-black text-white font-black py-3.5 rounded-xl shadow-lg shadow-rose-100 dark:shadow-none transition-all active:scale-95 text-[10px] uppercase tracking-widest disabled:bg-gray-200 dark:disabled:bg-gray-700 disabled:text-gray-400"
         >
-          <ShoppingCart :size="16" />
-          Add to Cart
+          <div class="flex items-center justify-center gap-2 relative z-10">
+            <ShoppingCart :size="14" class="transition-transform group-hover/btn:-translate-y-px" />
+            <span>Add to Cart</span>
+          </div>
         </button>
       </div>
     </div>

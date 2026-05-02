@@ -205,41 +205,43 @@ const flashSaleProducts = computed(() => productStore.products.slice(0, 6))
         class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden mb-8 border border-gray-100 dark:border-gray-700 transition-colors"
       >
         <div
-          class="bg-gradient-to-r from-olabits-wine via-olabits-red to-olabits-wine px-4 md:px-6 py-5 flex flex-wrap items-center justify-between text-white"
+          class="bg-gradient-to-r from-olabits-wine via-olabits-red to-olabits-wine px-4 md:px-6 py-5 flex flex-col sm:flex-row gap-4 sm:items-center justify-between text-white"
         >
-          <div class="flex items-center gap-8">
+          <div class="flex flex-col lg:flex-row lg:items-center gap-4 md:gap-8">
             <div
               class="flex items-center gap-3 font-black uppercase tracking-tighter text-lg md:text-2xl italic"
             >
               <div
-                class="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center border border-white/20"
+                class="w-10 h-10 md:w-12 md:h-12 bg-white/10 rounded-2xl flex items-center justify-center border border-white/20 flex-shrink-0"
               >
-                <Zap :size="28" fill="white" class="animate-pulse" />
+                <Zap :size="24" fill="white" class="animate-pulse" />
               </div>
-              Midnight Deals
+              <span class="whitespace-nowrap">Midnight Deals</span>
             </div>
+            
+            <!-- Timer - now visible on smaller screens but smaller -->
             <div
-              class="hidden lg:flex items-center gap-4 text-sm font-black bg-black/30 px-6 py-2.5 rounded-2xl border border-white/10 shadow-inner"
+              class="flex items-center gap-3 md:gap-4 text-[11px] md:text-sm font-black bg-black/30 px-4 md:px-6 py-2 rounded-2xl border border-white/10 shadow-inner w-fit"
             >
               <div class="flex flex-col items-center leading-none">
-                <span class="text-[10px] text-white/50 mb-1 uppercase">Hours</span>
-                <span class="text-xl tabular-nums">{{ timeLeft.hours }}</span>
+                <span class="text-[8px] md:text-[10px] text-white/50 mb-1 uppercase">Hours</span>
+                <span class="text-base md:text-xl tabular-nums">{{ timeLeft.hours }}</span>
               </div>
-              <span class="text-white/30 text-2xl font-light">:</span>
+              <span class="text-white/30 text-lg md:text-2xl font-light">:</span>
               <div class="flex flex-col items-center leading-none">
-                <span class="text-[10px] text-white/50 mb-1 uppercase">Mins</span>
-                <span class="text-xl tabular-nums">{{ timeLeft.mins }}</span>
+                <span class="text-[8px] md:text-[10px] text-white/50 mb-1 uppercase">Mins</span>
+                <span class="text-base md:text-xl tabular-nums">{{ timeLeft.mins }}</span>
               </div>
-              <span class="text-white/30 text-2xl font-light">:</span>
+              <span class="text-white/30 text-lg md:text-2xl font-light">:</span>
               <div class="flex flex-col items-center leading-none">
-                <span class="text-[10px] text-white/50 mb-1 uppercase">Secs</span>
-                <span class="text-xl tabular-nums text-olabits-light">{{ timeLeft.secs }}</span>
+                <span class="text-[8px] md:text-[10px] text-white/50 mb-1 uppercase">Secs</span>
+                <span class="text-base md:text-xl tabular-nums text-olabits-light">{{ timeLeft.secs }}</span>
               </div>
             </div>
           </div>
           <RouterLink
             to="/deals"
-            class="text-[10px] font-black flex items-center gap-2 bg-white text-olabits-wine px-6 py-3 rounded-xl hover:bg-olabits-light transition-all uppercase tracking-widest shadow-2xl active:scale-95"
+            class="text-[10px] font-black flex items-center justify-center gap-2 bg-white text-olabits-wine px-6 py-3 rounded-xl hover:bg-olabits-light transition-all uppercase tracking-widest shadow-2xl active:scale-95 flex-shrink-0 sm:w-auto w-full"
           >
             All Deals <ChevronRight :size="16" />
           </RouterLink>
