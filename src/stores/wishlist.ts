@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useAuthStore } from './auth'
 import type { Product } from '../types'
 
-const API_URL = import.meta.env.VITE_API_URL || 'https://olabits-store.vercel.app/api'
+const API_URL = import.meta.env.VITE_API_URL || '/api'
 
 export const useWishlistStore = defineStore('wishlist', {
   state: () => ({

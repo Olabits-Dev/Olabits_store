@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import axios from 'axios'
 import type { Product } from '../types'
 
-const API_URL = import.meta.env.VITE_API_URL || 'https://olabits-store.vercel.app/api'
+const API_URL = import.meta.env.VITE_API_URL || '/api'
 
 export const useProductStore = defineStore('product', {
   state: () => ({
